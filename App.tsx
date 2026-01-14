@@ -1,10 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  Leaf, 
   Brain, 
   ShieldCheck, 
-  Activity, 
   Calendar, 
   MapPin, 
   Clock, 
@@ -12,8 +10,7 @@ import {
   ArrowRight,
   MessageCircle,
   FlaskConical,
-  HeartPulse,
-  Monitor
+  HeartPulse
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -29,24 +26,20 @@ const Navbar = () => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Altura de la navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition - offset,
         behavior: 'smooth'
       });
     }
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white shadow-lg py-3' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white shadow-lg py-3' : 'bg-white/80 backdrop-blur-md py-4'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center space-x-3">
-          <img src="eco fondo.png" alt="Ecosanación Logo" className="h-10 w-auto object-contain" />
+          <img src="eco%20fondo.png" alt="Ecosanación Logo" className="h-10 w-auto object-contain" />
           <span className="font-bold text-xl tracking-tight text-gray-900">Ecosanación</span>
         </div>
         <div className="hidden lg:flex items-center space-x-8">
@@ -70,14 +63,15 @@ const Hero = () => {
 
   return (
     <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-soft-cream">
-      <div className="absolute top-0 right-0 -z-10 w-2/3 h-full opacity-10">
-        <img src="anahi guayaba.jpg" alt="Fondo" className="w-full h-full object-cover" />
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 -z-10 w-full h-full opacity-5 pointer-events-none">
+        <img src="anahi.png" alt="Fondo Decorativo" className="w-full h-full object-cover scale-150 blur-3xl" />
       </div>
       
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div className="space-y-8">
           <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-2xl shadow-sm border border-pink-100">
-            <img src="casa latina.png" alt="Casa Latina" className="h-8 w-auto" />
+            <img src="casa%20latina.png" alt="Casa Latina" className="h-8 w-auto" />
             <span className="h-4 w-px bg-gray-200 mx-2"></span>
             <span className="text-guava-pink font-bold text-sm tracking-widest uppercase">Sesión Abierta y Gratuita</span>
           </div>
@@ -106,7 +100,7 @@ const Hero = () => {
           </div>
           <div className="absolute -bottom-8 -right-4 lg:-right-8 z-20 bg-white p-6 rounded-[2rem] shadow-2xl border border-gray-100 max-w-[280px]">
             <div className="flex items-center space-x-3 mb-2">
-              <img src="eco fondo.png" alt="Logo" className="w-10 h-10 object-contain" />
+              <img src="eco%20fondo.png" alt="Logo" className="w-10 h-10 object-contain" />
               <p className="font-bold text-gray-900">Anahí Fleck</p>
             </div>
             <p className="text-sm text-gray-500">Especialista en Ecosanación y Neuropsicología</p>
@@ -121,7 +115,7 @@ const Benefits = () => (
   <section id="beneficios" className="py-24 bg-white scroll-mt-20">
     <div className="container mx-auto px-6">
       <div className="text-center max-w-3xl mx-auto mb-20">
-        <h2 className="text-4xl lg:text-6xl font-black text-gray-900 mb-6 italic underline decoration-guava-pink">Propiedades Medicinales</h2>
+        <h2 className="text-4xl lg:text-6xl font-black text-gray-900 mb-6 italic underline decoration-guava-pink underline-offset-8">Propiedades Medicinales</h2>
         <p className="text-xl text-gray-600">
           Los extractos de hojas y fruto contienen flavonoides, taninos y terpenos que neutralizan radicales libres y reducen la inflamación.
         </p>
@@ -153,9 +147,9 @@ const About = () => (
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="lg:w-1/2">
           <div className="relative bg-white p-3 rounded-[4rem] shadow-2xl">
-            <img src="anahi.png" alt="Anahí Fleck" className="rounded-[3.5rem] w-full h-auto" />
+            <img src="anahi.png" alt="Anahí Fleck Portrait" className="rounded-[3.5rem] w-full h-auto" />
             <div className="absolute -bottom-6 -left-6">
-               <img src="eco fondo.png" alt="Eco Logo" className="w-24 h-24 object-contain drop-shadow-lg" />
+               <img src="eco%20fondo.png" alt="Eco Logo" className="w-24 h-24 object-contain drop-shadow-lg" />
             </div>
           </div>
         </div>
@@ -183,13 +177,14 @@ const Details = () => (
     <div className="container mx-auto px-6">
       <div className="bg-gray-900 rounded-[4rem] p-12 lg:p-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-          <img src="anahi guayaba.jpg" alt="Decoration" className="w-full h-full object-cover" />
+          {/* Usamos anahi.png como decorativo si guayaba.jpg no carga */}
+          <img src="anahi.png" alt="Decoration" className="w-full h-full object-cover blur-sm" />
         </div>
         
         <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-10 text-white">
             <h2 className="text-5xl lg:text-7xl font-black leading-tight">
-              Agendá el <span className="text-guava-pink italic underline">Encuentro</span>
+              Agendá el <span className="text-guava-pink italic underline decoration-guava-pink underline-offset-4">Encuentro</span>
             </h2>
             
             <div className="grid gap-8">
@@ -220,25 +215,25 @@ const Details = () => (
                 <div>
                   <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">Lugar</p>
                   <p className="text-2xl font-bold">Parque Rural (Misiones)</p>
-                  <p className="text-blue-400">Híbrido: Virtual + Presencial</p>
+                  <p className="text-blue-400 italic">Híbrido: Virtual + Presencial</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/10 border border-white/20 rounded-[3rem] p-10 backdrop-blur-md">
+          <div className="bg-white/10 border border-white/20 rounded-[3rem] p-10 backdrop-blur-md shadow-2xl">
             <h4 className="text-3xl font-bold text-white mb-8 text-center lg:text-left">Organiza</h4>
             <div className="flex flex-col gap-6">
-              <div className="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-xl">
-                <img src="casa latina.png" alt="Casa Latina" className="h-12 w-auto object-contain" />
+              <div className="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-xl transition-transform hover:scale-105">
+                <img src="casa%20latina.png" alt="Casa Latina" className="h-12 w-auto object-contain" />
                 <span className="text-gray-900 font-black text-xl">Casa Latina</span>
               </div>
-              <div className="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-xl">
-                <img src="eco fondo.png" alt="Ecosanación" className="h-12 w-auto object-contain" />
+              <div className="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-xl transition-transform hover:scale-105">
+                <img src="eco%20fondo.png" alt="Ecosanación" className="h-12 w-auto object-contain" />
                 <span className="text-gray-900 font-black text-xl">Ecosanación</span>
               </div>
               <div className="mt-8 text-center">
-                <p className="text-guava-pink text-4xl font-black uppercase tracking-widest animate-pulse drop-shadow-lg">
+                <p className="text-guava-pink text-5xl font-black uppercase tracking-widest animate-pulse drop-shadow-xl">
                   ¡GRATIS!
                 </p>
               </div>
@@ -272,8 +267,8 @@ const Form = () => {
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="bg-white rounded-[4rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-gray-100">
           <div className="lg:w-1/2 bg-gray-900 p-12 lg:p-20 text-white flex flex-col justify-center relative">
-            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-              <img src="anahi guayaba.jpg" alt="Flyer Decor" className="w-full h-full object-cover" />
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+              <img src="anahi.png" alt="Flyer Decor" className="w-full h-full object-cover grayscale brightness-50" />
             </div>
             <div className="relative z-10">
               <h2 className="text-5xl font-black mb-6">Últimos Cupos</h2>
@@ -303,8 +298,8 @@ const Form = () => {
                   type="text" 
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-lg font-medium text-gray-800" 
-                  placeholder="Escribe tu nombre..." 
+                  className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-lg font-medium text-gray-800 shadow-sm" 
+                  placeholder="Tu nombre y apellido..." 
                 />
               </div>
               <div>
@@ -314,8 +309,8 @@ const Form = () => {
                   type="tel" 
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-lg font-medium text-gray-800" 
-                  placeholder="Ej: 3764556677" 
+                  className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-lg font-medium text-gray-800 shadow-sm" 
+                  placeholder="Ej: 3764000000" 
                 />
               </div>
               <div>
@@ -324,7 +319,7 @@ const Form = () => {
                   <select 
                     value={mode}
                     onChange={(e) => setMode(e.target.value)}
-                    className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-lg appearance-none font-medium text-gray-800 cursor-pointer"
+                    className="w-full px-6 py-5 bg-gray-50 rounded-2xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-lg appearance-none font-medium text-gray-800 cursor-pointer shadow-sm"
                   >
                     <option>Presencial (Parque Rural)</option>
                     <option>Virtual (Transmisión en vivo)</option>
@@ -353,11 +348,14 @@ const Footer = () => (
   <footer className="bg-white py-16 border-t border-gray-100">
     <div className="container mx-auto px-6 text-center">
       <div className="flex items-center justify-center space-x-12 mb-10">
-        <img src="casa latina.png" alt="Casa Latina" className="h-14 w-auto object-contain" />
-        <img src="eco fondo.png" alt="Ecosanación" className="h-14 w-auto object-contain" />
+        <img src="casa%20latina.png" alt="Casa Latina" className="h-16 w-auto object-contain" />
+        <img src="eco%20fondo.png" alt="Ecosanación" className="h-16 w-auto object-contain" />
       </div>
-      <p className="text-gray-500 font-bold text-lg mb-2">© 2024 Ecosanación & Anahí Fleck</p>
-      <p className="text-gray-400 text-sm italic">Misiones, Argentina • Una experiencia ambiental única.</p>
+      <p className="text-gray-500 font-bold text-lg mb-2 italic">© 2024 Ecosanación & Anahí Fleck</p>
+      <div className="flex justify-center space-x-2 mt-4">
+        <div className="w-12 h-1 bg-guava-pink rounded-full"></div>
+        <div className="w-12 h-1 bg-guava-green rounded-full"></div>
+      </div>
     </div>
   </footer>
 );
@@ -380,11 +378,8 @@ export default function App() {
             const element = document.getElementById('inscripcion');
             if (element) {
               const offset = 80;
-              const bodyRect = document.body.getBoundingClientRect().top;
-              const elementRect = element.getBoundingClientRect().top;
-              const elementPosition = elementRect - bodyRect;
-              const offsetPosition = elementPosition - offset;
-              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+              const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+              window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
             }
           }}
           className="block w-full bg-guava-green text-white text-center py-5 rounded-2xl font-black text-xl shadow-2xl active:scale-95 transition-all"
@@ -395,3 +390,4 @@ export default function App() {
     </div>
   );
 }
+
