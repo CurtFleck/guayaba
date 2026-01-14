@@ -2,10 +2,10 @@
 import React from 'react';
 
 export const MapSection: React.FC = () => {
-  // Stable Embed URL for Parque Rural Posadas
-  const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.354!2d-55.88294!3d-27.458219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945795f70a7b458b%3A0xc3f5c7885996cc51!2sParque%20Rural%20Posadas!5e0!3m2!1ses!2sar!4v1738260000000!5m2!1ses!2sar";
+  // Using a query-based embed URL which is more robust for showing pins for specific locations
+  const mapEmbedUrl = "https://maps.google.com/maps?q=Parque%20Rural%20Posadas%20Misiones&t=&z=15&ie=UTF8&iwloc=&output=embed";
   
-  // Link provided by the user
+  // Direct Link provided by the user for the external button
   const externalMapLink = "https://maps.app.goo.gl/ZeYMeb7KLQuVancF7";
 
   return (
@@ -50,7 +50,7 @@ export const MapSection: React.FC = () => {
             <iframe 
               title="Ubicación Parque Rural"
               src={mapEmbedUrl}
-              className="w-full h-full border-0 grayscale-[0.2] hover:grayscale-0 transition-all duration-700" 
+              className="w-full h-full border-0 transition-all duration-700" 
               allowFullScreen={true} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
