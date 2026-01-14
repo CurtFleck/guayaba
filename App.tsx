@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Brain, 
@@ -39,7 +38,8 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white shadow-lg py-3' : 'bg-white/80 backdrop-blur-md py-4'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center space-x-3">
-          <img src="eco%20fondo.png" alt="Ecosanación Logo" className="h-10 w-auto object-contain" />
+          {/* CORREGIDO: Agregada la barra / al inicio */}
+          <img src="/eco%20fondo.png" alt="Ecosanación Logo" className="h-10 w-auto object-contain" />
           <span className="font-bold text-xl tracking-tight text-gray-900">Ecosanación</span>
         </div>
         <div className="hidden lg:flex items-center space-x-8">
@@ -65,13 +65,15 @@ const Hero = () => {
     <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-soft-cream">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 -z-10 w-full h-full opacity-5 pointer-events-none">
-        <img src="anahi.png" alt="Fondo Decorativo" className="w-full h-full object-cover scale-150 blur-3xl" />
+        {/* CORREGIDO: Agregada la barra / al inicio */}
+        <img src="/anahi.png" alt="Fondo Decorativo" className="w-full h-full object-cover scale-150 blur-3xl" />
       </div>
       
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div className="space-y-8">
           <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-2xl shadow-sm border border-pink-100">
-            <img src="casa%20latina.png" alt="Casa Latina" className="h-8 w-auto" />
+             {/* CORREGIDO: Agregada la barra / al inicio */}
+            <img src="/casa%20latina.png" alt="Casa Latina" className="h-8 w-auto" />
             <span className="h-4 w-px bg-gray-200 mx-2"></span>
             <span className="text-guava-pink font-bold text-sm tracking-widest uppercase">Sesión Abierta y Gratuita</span>
           </div>
@@ -96,11 +98,13 @@ const Hero = () => {
 
         <div className="relative">
           <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white bg-white">
-            <img src="anahi.png" alt="Anahí Fleck" className="w-full h-auto object-cover" />
+             {/* CORREGIDO: Agregada la barra / al inicio */}
+            <img src="/anahi.png" alt="Anahí Fleck" className="w-full h-auto object-cover" />
           </div>
           <div className="absolute -bottom-8 -right-4 lg:-right-8 z-20 bg-white p-6 rounded-[2rem] shadow-2xl border border-gray-100 max-w-[280px]">
             <div className="flex items-center space-x-3 mb-2">
-              <img src="eco%20fondo.png" alt="Logo" className="w-10 h-10 object-contain" />
+               {/* CORREGIDO: Agregada la barra / al inicio */}
+              <img src="/eco%20fondo.png" alt="Logo" className="w-10 h-10 object-contain" />
               <p className="font-bold text-gray-900">Anahí Fleck</p>
             </div>
             <p className="text-sm text-gray-500">Especialista en Ecosanación y Neuropsicología</p>
@@ -147,9 +151,11 @@ const About = () => (
       <div className="flex flex-col lg:flex-row items-center gap-16">
         <div className="lg:w-1/2">
           <div className="relative bg-white p-3 rounded-[4rem] shadow-2xl">
-            <img src="anahi.png" alt="Anahí Fleck Portrait" className="rounded-[3.5rem] w-full h-auto" />
+             {/* CORREGIDO: Agregada la barra / al inicio */}
+            <img src="/anahi.png" alt="Anahí Fleck Portrait" className="rounded-[3.5rem] w-full h-auto" />
             <div className="absolute -bottom-6 -left-6">
-               <img src="eco%20fondo.png" alt="Eco Logo" className="w-24 h-24 object-contain drop-shadow-lg" />
+                {/* CORREGIDO: Agregada la barra / al inicio */}
+               <img src="/eco%20fondo.png" alt="Eco Logo" className="w-24 h-24 object-contain drop-shadow-lg" />
             </div>
           </div>
         </div>
@@ -177,8 +183,8 @@ const Details = () => (
     <div className="container mx-auto px-6">
       <div className="bg-gray-900 rounded-[4rem] p-12 lg:p-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-          {/* Usamos anahi.png como decorativo si guayaba.jpg no carga */}
-          <img src="anahi.png" alt="Decoration" className="w-full h-full object-cover blur-sm" />
+           {/* CORREGIDO: Agregada la barra / al inicio */}
+          <img src="/anahi.png" alt="Decoration" className="w-full h-full object-cover blur-sm" />
         </div>
         
         <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
@@ -225,11 +231,13 @@ const Details = () => (
             <h4 className="text-3xl font-bold text-white mb-8 text-center lg:text-left">Organiza</h4>
             <div className="flex flex-col gap-6">
               <div className="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-xl transition-transform hover:scale-105">
-                <img src="casa%20latina.png" alt="Casa Latina" className="h-12 w-auto object-contain" />
+                 {/* CORREGIDO: Agregada la barra / al inicio */}
+                <img src="/casa%20latina.png" alt="Casa Latina" className="h-12 w-auto object-contain" />
                 <span className="text-gray-900 font-black text-xl">Casa Latina</span>
               </div>
               <div className="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-xl transition-transform hover:scale-105">
-                <img src="eco%20fondo.png" alt="Ecosanación" className="h-12 w-auto object-contain" />
+                 {/* CORREGIDO: Agregada la barra / al inicio */}
+                <img src="/eco%20fondo.png" alt="Ecosanación" className="h-12 w-auto object-contain" />
                 <span className="text-gray-900 font-black text-xl">Ecosanación</span>
               </div>
               <div className="mt-8 text-center">
@@ -268,7 +276,8 @@ const Form = () => {
         <div className="bg-white rounded-[4rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-gray-100">
           <div className="lg:w-1/2 bg-gray-900 p-12 lg:p-20 text-white flex flex-col justify-center relative">
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-              <img src="anahi.png" alt="Flyer Decor" className="w-full h-full object-cover grayscale brightness-50" />
+               {/* CORREGIDO: Agregada la barra / al inicio */}
+              <img src="/anahi.png" alt="Flyer Decor" className="w-full h-full object-cover grayscale brightness-50" />
             </div>
             <div className="relative z-10">
               <h2 className="text-5xl font-black mb-6">Últimos Cupos</h2>
@@ -348,8 +357,9 @@ const Footer = () => (
   <footer className="bg-white py-16 border-t border-gray-100">
     <div className="container mx-auto px-6 text-center">
       <div className="flex items-center justify-center space-x-12 mb-10">
-        <img src="casa%20latina.png" alt="Casa Latina" className="h-16 w-auto object-contain" />
-        <img src="eco%20fondo.png" alt="Ecosanación" className="h-16 w-auto object-contain" />
+         {/* CORREGIDO: Agregada la barra / al inicio */}
+        <img src="/casa%20latina.png" alt="Casa Latina" className="h-16 w-auto object-contain" />
+        <img src="/eco%20fondo.png" alt="Ecosanación" className="h-16 w-auto object-contain" />
       </div>
       <p className="text-gray-500 font-bold text-lg mb-2 italic">© 2024 Ecosanación & Anahí Fleck</p>
       <div className="flex justify-center space-x-2 mt-4">
@@ -390,4 +400,3 @@ export default function App() {
     </div>
   );
 }
-
