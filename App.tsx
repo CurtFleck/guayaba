@@ -1,390 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Brain, 
-  ShieldCheck, 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  CheckCircle2, 
-  ArrowRight,
-  MessageCircle,
-  FlaskConical,
-  HeartPulse
-} from 'lucide-react';
 
-const Navbar = () => {
+import React, { useState, useEffect } from 'react';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { Benefits } from './components/Benefits';
+import { About } from './components/About';
+import { Experience } from './components/Experience';
+import { RegistrationForm } from './components/RegistrationForm';
+import { Footer } from './components/Footer';
+import { MapSection } from './components/MapSection';
+
+const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollTo = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white shadow-lg py-3' : 'bg-white/80 backdrop-blur-md py-4'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center space-x-3">
-          <img src="/eco%20fondo.png" alt="Ecosanación Logo" className="h-10 w-auto object-contain" />
-          <span className="font-bold text-xl tracking-tight text-gray-900">Ecosanación</span>
-        </div>
-        <div className="hidden lg:flex items-center space-x-8">
-          <a href="#beneficios" onClick={(e) => handleScrollTo(e, 'beneficios')} className="font-semibold text-gray-700 hover:text-guava-pink transition-colors">Propiedades</a>
-          <a href="#anahi" onClick={(e) => handleScrollTo(e, 'anahi')} className="font-semibold text-gray-700 hover:text-guava-pink transition-colors">Anahí Fleck</a>
-          <a href="#detalles" onClick={(e) => handleScrollTo(e, 'detalles')} className="font-semibold text-gray-700 hover:text-guava-pink transition-colors">Evento</a>
-          <button onClick={(e) => handleScrollTo(e, 'inscripcion')} className="bg-guava-green text-white px-8 py-3 rounded-full font-bold hover:bg-green-700 transition-all shadow-lg">
-            Inscribirme Gratis
-          </button>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-const Hero = () => {
-  const handleScrollToForm = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.getElementById('inscripcion')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  return (
-    <header className="relative pt-32 pb-20 lg:pt-28 lg:pb-32 overflow-hidden bg-soft-cream">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 -z-10 w-full h-full opacity-5 pointer-events-none">
-        <img src="/anahi.png" alt="Fondo Decorativo" className="w-full h-full object-cover scale-150 blur-3xl" />
-      </div>
-      
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div className="space-y-8 lg:pr-4">
-          <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-2xl shadow-sm border border-pink-100">
-            <img src="/casa%20latina.png" alt="Casa Latina" className="h-8 w-auto" />
-            <span className="h-4 w-px bg-gray-200 mx-2"></span>
-            <span className="text-guava-pink font-bold text-sm tracking-widest uppercase">Sesión Abierta y Gratuita</span>
-          </div>
-          
-          <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-[1.1]">
-            Poder de la <span className="text-guava-pink italic">Guayaba</span>
-          </h1>
-          
-          <h2 className="text-xl lg:text-2xl font-medium text-gray-600 leading-relaxed italic">
-            Ecosanación y Neuropsicología: Un viaje científico a tus raíces biológicas.
-          </h2>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button onClick={handleScrollToForm} className="flex items-center justify-center bg-guava-pink text-white px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-xl shadow-pink-200 group">
-              ¡Quiero Anotarme! <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </button>
-            <a href="https://wa.me/3764385152" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center bg-white border-2 border-guava-green text-guava-green px-8 py-4 rounded-2xl font-bold text-lg hover:bg-green-50 transition-all">
-              <MessageCircle className="mr-2" size={20} /> Consultar WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <div className="relative max-w-lg mx-auto lg:mr-0">
-          <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl border-[10px] border-white bg-white">
-            <img src="/anahi.png" alt="Anahí Fleck" className="w-full h-auto object-cover" />
-          </div>
-          <div className="absolute -bottom-6 -left-6 lg:-left-12 z-20 bg-white p-5 rounded-[1.5rem] shadow-xl border border-gray-100 max-w-[240px]">
-            <div className="flex items-center space-x-3 mb-2">
-              <img src="/eco%20fondo.png" alt="Logo" className="w-8 h-8 object-contain" />
-              <p className="font-bold text-gray-900 leading-tight">Anahí Fleck</p>
-            </div>
-            <p className="text-xs text-gray-500 leading-snug">Especialista en Ecosanación y Neuropsicología</p>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-};
-
-const Benefits = () => (
-  <section id="beneficios" className="py-24 bg-white scroll-mt-20">
-    <div className="container mx-auto px-6">
-      <div className="text-center max-w-3xl mx-auto mb-20">
-        <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-6 italic underline decoration-guava-pink underline-offset-8">Propiedades Medicinales</h2>
-        <p className="text-xl text-gray-600">
-          Los extractos de hojas y fruto contienen flavonoides, taninos y terpenos que neutralizan radicales libres y reducen la inflamación.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[
-          { icon: Brain, title: "Neurodetoxificante", desc: "Ayuda en la desintoxicación de nicotina en el sistema nervioso.", color: "bg-red-50 text-red-600" },
-          { icon: ShieldCheck, title: "Antioxidante", desc: "Neutraliza radicales libres y reduce marcadores inflamatorios.", color: "bg-green-50 text-green-600" },
-          { icon: FlaskConical, title: "Antimicrobiana", desc: "Actividad contra bacterias y parásitos según usos tradicionales.", color: "bg-blue-50 text-blue-600" },
-          { icon: HeartPulse, title: "Hipoglucemiante", desc: "Efectos metabólicos positivos y apoyo en control glucémico.", color: "bg-orange-50 text-orange-600" }
-        ].map((item, i) => (
-          <div key={i} className="group p-8 rounded-[2rem] bg-gray-50 hover:bg-white hover:shadow-xl transition-all duration-500 border border-transparent hover:border-gray-100">
-            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${item.color}`}>
-              <item.icon size={28} />
-            </div>
-            <h3 className="text-xl font-black text-gray-900 mb-3">{item.title}</h3>
-            <p className="text-gray-600 leading-relaxed text-sm">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const About = () => (
-  <section id="anahi" className="py-24 bg-soft-cream scroll-mt-20">
-    <div className="container mx-auto px-6">
-      <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        <div className="lg:w-1/2">
-          <div className="relative bg-white p-2 rounded-[3rem] shadow-2xl max-w-lg mx-auto">
-            <img src="/anahi.png" alt="Anahí Fleck Portrait" className="rounded-[2.5rem] w-full h-auto" />
-            <div className="absolute -bottom-5 -right-5">
-               <img src="/eco%20fondo.png" alt="Eco Logo" className="w-20 h-20 object-contain drop-shadow-lg" />
-            </div>
-          </div>
-        </div>
-        <div className="lg:w-1/2 space-y-6 lg:pl-8">
-          <h2 className="text-4xl lg:text-5xl font-black text-gray-900 italic">Sobre Anahí Fleck</h2>
-          <div className="text-lg text-gray-700 space-y-5 leading-relaxed">
-            <p>
-              Anahí propone una experiencia ambiental única. Su enfoque en la <strong>Ecosanación</strong> y la <strong>Neuropsicología</strong> permite entender cómo las propiedades de la naturaleza inciden en nuestro bienestar mental y físico.
-            </p>
-            <p>
-              Esta charla busca desmitificar el uso tradicional de las plantas y respaldarlo con evidencia científica, aceites esenciales y compuestos fenólicos presentes en la Guayaba.
-            </p>
-          </div>
-          <div className="p-6 bg-white rounded-2xl shadow-sm italic text-gray-500 border-l-4 border-guava-pink text-base font-medium">
-            "La guayaba es un secreto de la neuropsicología que hoy vengo a revelarte."
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Details = () => (
-  <section id="detalles" className="py-24 bg-white relative scroll-mt-20">
-    <div className="container mx-auto px-6">
-      <div className="bg-gray-900 rounded-[3rem] p-10 lg:p-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-2/3 h-full opacity-10 pointer-events-none">
-          <img src="/anahi.png" alt="Decoration" className="w-full h-full object-cover blur-sm" />
-        </div>
-        
-        <div className="relative z-10 grid lg:grid-cols-5 gap-12 items-center">
-          <div className="lg:col-span-3 space-y-8 text-white">
-            <h2 className="text-4xl lg:text-6xl font-black leading-tight">
-              Agendá el <span className="text-guava-pink italic underline decoration-guava-pink underline-offset-4">Encuentro</span>
-            </h2>
-            
-            <div className="grid gap-6">
-              <div className="flex items-start space-x-5">
-                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-guava-pink shrink-0">
-                  <Calendar size={24} />
-                </div>
-                <div>
-                  <p className="text-gray-400 font-bold uppercase tracking-widest text-[0.65rem]">Fecha</p>
-                  <p className="text-xl font-bold">Domingo 2 de Febrero</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-5">
-                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-guava-green shrink-0">
-                  <Clock size={24} />
-                </div>
-                <div>
-                  <p className="text-gray-400 font-bold uppercase tracking-widest text-[0.65rem]">Hora</p>
-                  <p className="text-xl font-bold">9:00 AM</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-5">
-                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-blue-400 shrink-0">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <p className="text-gray-400 font-bold uppercase tracking-widest text-[0.65rem]">Lugar</p>
-                  <p className="text-xl font-bold leading-tight">Parque Rural (Misiones)</p>
-                  <p className="text-blue-400 italic text-sm">Híbrido: Virtual + Presencial</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-2 bg-white/10 border border-white/20 rounded-[2.5rem] p-8 backdrop-blur-md shadow-2xl">
-            <h4 className="text-2xl font-bold text-white mb-6 text-center">Organiza</h4>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center space-x-4 bg-white p-4 rounded-xl shadow-lg transition-transform hover:scale-105">
-                <img src="/casa%20latina.png" alt="Casa Latina" className="h-10 w-auto object-contain" />
-                <span className="text-gray-900 font-black text-lg">Casa Latina</span>
-              </div>
-              <div className="flex items-center space-x-4 bg-white p-4 rounded-xl shadow-lg transition-transform hover:scale-105">
-                <img src="/eco%20fondo.png" alt="Ecosanación" className="h-10 w-auto object-contain" />
-                <span className="text-gray-900 font-black text-lg">Ecosanación</span>
-              </div>
-              <div className="mt-6 text-center">
-                <p className="text-guava-pink text-4xl font-black uppercase tracking-widest animate-pulse drop-shadow-xl">
-                  ¡GRATIS!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const Form = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [mode, setMode] = useState('Presencial (Parque Rural)');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !phone) {
-      alert('Por favor completa tu nombre y WhatsApp');
-      return;
-    }
-    const message = `Hola! Soy ${name}. Mi WhatsApp es ${phone}. Me interesa participar en la charla de la Guayaba de forma ${mode}. ¡Quiero reservar mi lugar!`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/3764385152?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  return (
-    <section id="inscripcion" className="py-24 bg-guava-pink scroll-mt-20">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-gray-100">
-          <div className="lg:w-5/12 bg-gray-900 p-10 lg:p-12 text-white flex flex-col justify-center relative">
-            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-              <img src="/anahi.png" alt="Flyer Decor" className="w-full h-full object-cover grayscale brightness-50" />
-            </div>
-            <div className="relative z-10">
-              <h2 className="text-4xl font-black mb-4">Últimos Cupos</h2>
-              <p className="text-lg opacity-90 mb-8 leading-relaxed">
-                Inscríbete ahora para recibir los detalles de conexión virtual o la ubicación.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle2 className="text-guava-green" size={24} />
-                  <span className="text-base font-bold">Acceso directo a la charla</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MessageCircle className="text-guava-pink" size={24} />
-                  <span className="text-base font-bold">Consultas: 3764-385152</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:w-7/12 p-10 lg:p-16">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <h3 className="text-2xl font-black text-gray-900 mb-2">Registro Rápido</h3>
-              <div>
-                <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Nombre Completo</label>
-                <input 
-                  required 
-                  type="text" 
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-5 py-4 bg-gray-50 rounded-xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-base font-medium text-gray-800 shadow-sm" 
-                  placeholder="Tu nombre y apellido..." 
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">WhatsApp</label>
-                <input 
-                  required 
-                  type="tel" 
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-5 py-4 bg-gray-50 rounded-xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-base font-medium text-gray-800 shadow-sm" 
-                  placeholder="Ej: 3764000000" 
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-black text-gray-400 uppercase tracking-widest mb-2">¿Cómo participarás?</label>
-                <div className="relative">
-                  <select 
-                    value={mode}
-                    onChange={(e) => setMode(e.target.value)}
-                    className="w-full px-5 py-4 bg-gray-50 rounded-xl border-2 border-transparent focus:border-guava-pink focus:bg-white outline-none transition-all text-base appearance-none font-medium text-gray-800 cursor-pointer shadow-sm pr-10"
-                  >
-                    <option>Presencial (Parque Rural)</option>
-                    <option>Virtual (Transmisión en vivo)</option>
-                  </select>
-                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                    <ArrowRight className="rotate-90" size={18} />
-                  </div>
-                </div>
-              </div>
-              <button 
-                type="submit" 
-                className="w-full bg-gray-900 text-white py-4 rounded-xl font-black text-xl hover:bg-black transition-all shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center space-x-2 mt-4"
-              >
-                <span>¡RESERVAR LUGAR!</span>
-                <MessageCircle size={20} />
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const Footer = () => (
-  <footer className="bg-white py-12 border-t border-gray-100">
-    <div className="container mx-auto px-6 text-center">
-      <div className="flex items-center justify-center space-x-8 mb-8">
-        <img src="/casa%20latina.png" alt="Casa Latina" className="h-12 w-auto object-contain" />
-        <img src="/eco%20fondo.png" alt="Ecosanación" className="h-12 w-auto object-contain" />
-      </div>
-      <p className="text-gray-500 font-bold text-base mb-2 italic">© 2026 Ecosanación & Anahí Fleck</p>
-      <div className="flex justify-center space-x-2 mt-4">
-        <div className="w-10 h-1 bg-guava-pink rounded-full"></div>
-        <div className="w-10 h-1 bg-guava-green rounded-full"></div>
-      </div>
-    </div>
-  </footer>
-);
-
-export default function App() {
-  return (
-    <div className="min-h-screen bg-soft-cream selection:bg-guava-pink selection:text-white font-sans">
-      <Navbar />
-      <Hero />
-      <Benefits />
-      <About />
-      <Details />
-      <Form />
+    <div className="min-h-screen flex flex-col overflow-x-hidden selection:bg-sage/20 selection:text-sage">
+      <Header isScrolled={isScrolled} />
+      <main className="flex-grow">
+        <Hero />
+        <section id="beneficios" className="py-20 bg-white scroll-mt-24">
+          <Benefits />
+        </section>
+        <section id="sobre-mi" className="py-20 bg-stone-50 scroll-mt-24">
+          <About />
+        </section>
+        <section id="experiencia" className="py-20 bg-white scroll-mt-24">
+          <Experience />
+          <MapSection />
+        </section>
+        <section id="inscripcion" className="py-20 bg-sage text-white scroll-mt-24">
+          <RegistrationForm />
+        </section>
+      </main>
       <Footer />
-      
-      {/* Botón flotante móvil */}
-      <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
-        <button 
-          onClick={() => {
-            const element = document.getElementById('inscripcion');
-            if (element) {
-              const offset = 80;
-              const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-              window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
-            }
-          }}
-          className="block w-full bg-guava-green text-white text-center py-4 rounded-xl font-black text-lg shadow-xl active:scale-95 transition-all"
-        >
-          ¡INSCRIBITE GRATIS!
-        </button>
-      </div>
     </div>
   );
-}
+};
+
+export default App;
