@@ -35,7 +35,7 @@ export const Hero: React.FC = () => {
               <span className="text-sage italic font-serif">Guayaba</span>
             </h1>
             <p className="text-xl text-gray-600 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-              Descubre las asombrosas propiedades medicinales de este fruto sagrado desde la mirada de la Ecosanación y la Neuropsicología.
+              Descubre las asombrosas propiedades medicinales de este fruto desde la mirada de la Ecosanación y la Neuropsicología.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-lg mx-auto lg:mx-0">
