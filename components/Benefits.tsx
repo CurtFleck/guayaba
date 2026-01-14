@@ -95,7 +95,7 @@ export const Benefits: React.FC = () => {
           </div>
           <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video lg:aspect-[4/3] group">
             <img 
-              src="guayaba.jpg" 
+              src="guayaba.jpeg" 
               alt="Botánica de Guayaba" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
             />
