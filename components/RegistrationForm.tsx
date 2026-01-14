@@ -73,7 +73,7 @@ export const RegistrationForm: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <p className="font-bold text-xl">Sesión de Q&A</p>
+                <p className="font-bold text-xl">Sesiones individuales post charla</p>
                 <p className="text-base opacity-75 font-medium mt-1">Espacio abierto para consultas personalizadas con Anahí Fleck.</p>
               </div>
             </div>

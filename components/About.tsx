@@ -71,7 +71,7 @@ export const About: React.FC = () => {
             </p>
             <div className="pt-8 flex gap-10">
               <div>
-                <AnimatedCounter endValue={15} suffix="+" />
+                <AnimatedCounter endValue={21} suffix="+" />
                 <p className="text-xs font-bold uppercase text-gray-400 mt-2">Años de Exp.</p>
               </div>
               <div className="border-l border-gray-200 pl-10">

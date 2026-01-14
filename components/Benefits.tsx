@@ -77,24 +77,29 @@ export const Benefits: React.FC = () => {
         ))}
       </div>
 
-      {/* Simplified details section */}
+      {/* Science and Tradition section with local image */}
       <div className="mt-20 bg-stone-50 rounded-[40px] p-8 lg:p-12 border border-stone-200">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <h3 className="text-3xl font-bold italic text-sage leading-tight">Ciencia y Tradición en armonía</h3>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sage text-white flex items-center justify-center font-bold">1</div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sage text-white flex items-center justify-center font-bold shadow-md shadow-sage/20">1</div>
                 <p className="text-gray-700 text-lg leading-relaxed font-medium">Extractos de hojas que neutralizan radicales libres.</p>
               </div>
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sage text-white flex items-center justify-center font-bold">2</div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sage text-white flex items-center justify-center font-bold shadow-md shadow-sage/20">2</div>
                 <p className="text-gray-700 text-lg leading-relaxed font-medium">Aceites esenciales con actividad antimicrobiana probada.</p>
               </div>
             </div>
           </div>
-          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-video">
-            <img src="https://picsum.photos/seed/guava-botany/800/600" alt="Botánica" className="w-full h-full object-cover" />
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video lg:aspect-[4/3] group">
+            <img 
+              src="guayaba.jpg" 
+              alt="Botánica de Guayaba" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
       </div>
